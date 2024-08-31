@@ -1,0 +1,4 @@
+name: "${name}"
+version: "${version}"
+main: kz.hxncus.mc.minesonapikotlin.MinesonAPI
+api-version: '1.13'
