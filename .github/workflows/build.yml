@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - development
+      - other-stuff
   pull_request:
     branches:
       - development
+      - other-stuff
 jobs:
   build:
     permissions: write-all
