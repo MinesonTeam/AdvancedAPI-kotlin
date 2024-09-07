@@ -4,7 +4,7 @@ import java.util.*
 
 plugins {
     kotlin("jvm") version "2.0.20"
-    id("io.papermc.paperweight.userdev") version "1.7.1"
+    id("io.papermc.paperweight.userdev") version "1.7.2"
     id("io.github.goooler.shadow") version "8.1.7"
 }
 
@@ -12,6 +12,7 @@ plugins {
 val paper: String = property("paper") as String
 val junit: String = property("junit") as String
 val exposed: String = property("exposed") as String
+val hikaricp: String = property("hikaricp") as String
 
 // Project version and group
 version = property("projectVersion") as String
@@ -76,12 +77,15 @@ allprojects {
         implementation("org.jetbrains.exposed:exposed-dao:$exposed")
         implementation("org.jetbrains.exposed:exposed-jdbc:$exposed")
         implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposed")
+        implementation("org.jetbrains.exposed:exposed-java-time:$exposed")
         implementation("org.jetbrains.exposed:exposed-json:$exposed")
+        implementation("com.zaxxer:HikariCP:$hikaricp")
 
+        testImplementation(kotlin("test"))
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junit")
     }
 
     java {
-        toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+        toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
